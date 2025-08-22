@@ -9,182 +9,159 @@
 #include <arpa/inet.h>
 #include <sys/time.h>
 #include <errno.h>
+#include <pthread.h>
+#include <signal.h>
+#include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/tcp.h>
-#include <netinet/udp.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <pthread.h>
-#include <sys/select.h> 
-#include <sys/epoll.h>
-#include <poll.h> 
-#include <sys/ioctl.h>
-#include <net/if.h>
-#include <linux/if_packet.h>
 #include <netinet/ether.h>
 
-// Calculate checksum for ICMP packet (required for ICMP protocol)
+// ---------- Global Counters ----------
+static unsigned long sent_packets = 0;
+static unsigned long recv_packets = 0;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+// ---------- Checksum ----------
 unsigned short checksum(void *b, int len) {
     unsigned short *buf = b;
     unsigned int sum = 0;
     unsigned short result;
-    
-    // Sum all 16-bit words in the buffer
-    for (sum = 0; len > 1; len -= 2) {
-        sum += *buf++;
-    }
-    
-    // Add left-over byte, if any (for odd-length buffers)
-    if (len == 1) {
-        sum += *(unsigned char *)buf;
-    }
-    
-    // Fold 32-bit sum to 16 bits (carry bits)
+    for (sum = 0; len > 1; len -= 2) sum += *buf++;
+    if (len == 1) sum += *(unsigned char *)buf;
     sum = (sum >> 16) + (sum & 0xFFFF);
     sum += (sum >> 16);
-    result = ~sum; // One's complement
-    
+    result = ~sum;
     return result;
 }
 
-// Function to send ICMP echo request packet
+// ---------- Send ICMP ----------
 int send_ping(int sockfd, struct sockaddr_in *addr, int seq) {
     struct icmp icmp_pkt;
     struct timeval tv;
-    
-    // Initialize ICMP packet structure
     memset(&icmp_pkt, 0, sizeof(icmp_pkt));
-    icmp_pkt.icmp_type = ICMP_ECHO;  // Echo request type
-    icmp_pkt.icmp_code = 0;          // Code 0 for echo request
-    icmp_pkt.icmp_id = getpid() & 0xFFFF; // Use process ID as identifier
-    icmp_pkt.icmp_seq = seq;         // Sequence number
-    
-    // Get current time for timestamp (used to calculate round-trip time)
+    icmp_pkt.icmp_type = ICMP_ECHO;
+    icmp_pkt.icmp_code = 0;
+    icmp_pkt.icmp_id = getpid() & 0xFFFF;
+    icmp_pkt.icmp_seq = seq;
     gettimeofday(&tv, NULL);
     memcpy(icmp_pkt.icmp_data, &tv, sizeof(tv));
-    
-    // Calculate checksum (must be 0 before calculation)
-    icmp_pkt.icmp_cksum = 0;
     icmp_pkt.icmp_cksum = checksum(&icmp_pkt, sizeof(icmp_pkt));
-    
-    // Send the packet using raw socket
-    if (sendto(sockfd, &icmp_pkt, sizeof(icmp_pkt), 0, 
+    if (sendto(sockfd, &icmp_pkt, sizeof(icmp_pkt), 0,
                (struct sockaddr *)addr, sizeof(*addr)) <= 0) {
-        perror("sendto failed");
         return -1;
     }
-    
+    pthread_mutex_lock(&lock);
+    sent_packets++;
+    pthread_mutex_unlock(&lock);
     return 0;
 }
 
-// Function to receive ICMP echo reply
+// ---------- Receive ICMP ----------
 int recv_ping(int sockfd, struct sockaddr_in *addr, int seq) {
-    char recvbuf[1024];              // Buffer for received packet
-    struct ip *ip_hdr;               // IP header structure
-    struct icmp *icmp_hdr;           // ICMP header structure
-    struct timeval tv_recv, tv_sent; // Time values for RTT calculation
+    char recvbuf[1024];
+    struct ip *ip_hdr;
+    struct icmp *icmp_hdr;
+    struct timeval tv_recv, tv_sent;
     socklen_t addr_len = sizeof(*addr);
-    int bytes_received;
-    
-    // Set timeout for receiving (1 second)
-    struct timeval timeout;
-    timeout.tv_sec = 1;
-    timeout.tv_usec = 0;
-    setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
-    
-    // Receive packet from socket
-    bytes_received = recvfrom(sockfd, recvbuf, sizeof(recvbuf), 0, 
-                             (struct sockaddr *)addr, &addr_len);
-    
-    if (bytes_received < 0) {
-        // Handle timeout or other errors
-        if (errno == EAGAIN || errno == EWOULDBLOCK) {
-            printf("Request timeout for icmp_seq %d\n", seq);
-        } else {
-            perror("recvfrom failed");
-        }
-        return -1;
-    }
-    
-    // Parse IP header (located at start of received buffer)
+
+    int bytes_received = recvfrom(sockfd, recvbuf, sizeof(recvbuf), MSG_DONTWAIT,
+                                  (struct sockaddr *)addr, &addr_len);
+    if (bytes_received <= 0) return -1;
+
     ip_hdr = (struct ip *)recvbuf;
-    int ip_hdr_len = ip_hdr->ip_hl * 4; // Header length in bytes
-    
-    // Parse ICMP header (after IP header)
+    int ip_hdr_len = ip_hdr->ip_hl * 4;
     icmp_hdr = (struct icmp *)(recvbuf + ip_hdr_len);
-    
-    // Check if it's an echo reply and matches our process ID
-    if (icmp_hdr->icmp_type == ICMP_ECHOREPLY && 
+
+    if (icmp_hdr->icmp_type == ICMP_ECHOREPLY &&
         icmp_hdr->icmp_id == (getpid() & 0xFFFF)) {
-        
-        // Extract sent time from packet data
         memcpy(&tv_sent, icmp_hdr->icmp_data, sizeof(tv_sent));
-        
-        // Get current receive time
         gettimeofday(&tv_recv, NULL);
-        
-        // Calculate round-trip time in milliseconds
         double rtt = (tv_recv.tv_sec - tv_sent.tv_sec) * 1000.0;
         rtt += (tv_recv.tv_usec - tv_sent.tv_usec) / 1000.0;
-        
-        // Print ping result (similar to standard ping output)
+
+        pthread_mutex_lock(&lock);
+        recv_packets++;
+        pthread_mutex_unlock(&lock);
+
         printf("%d bytes from %s: icmp_seq=%d ttl=%d time=%.3f ms\n",
-               bytes_received - ip_hdr_len,    // ICMP payload size
-               inet_ntoa(addr->sin_addr),     // Destination IP
-               icmp_hdr->icmp_seq,            // Sequence number
-               ip_hdr->ip_ttl,                // Time to live
-               rtt);                          // Round-trip time
-        
+               bytes_received - ip_hdr_len,
+               inet_ntoa(addr->sin_addr),
+               icmp_hdr->icmp_seq,
+               ip_hdr->ip_ttl,
+               rtt);
         return 0;
     }
-    
-    return -1; // Not our packet or wrong type
+    return -1;
 }
 
-int main(int argc, char *argv[]) {
-    int sockfd;                     // Socket file descriptor
-    struct sockaddr_in addr;        // Destination address structure
-    int seq = 0;                    // Sequence counter
-    
-    // Validate command line arguments
-    if (argc != 2) {
-        fprintf(stderr, "Usage: %s <hostname/IP>\n", argv[0]);
-        exit(EXIT_FAILURE);
-    }
-    
-    // Create raw socket for ICMP protocol (requires root privileges)
-    sockfd = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
+// ---------- Thread Function ----------
+void *ping_thread(void *arg) {
+    struct sockaddr_in *addr = (struct sockaddr_in *)arg;
+    int sockfd = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
     if (sockfd < 0) {
-        perror("socket creation failed");
-        fprintf(stderr, "Note: Raw sockets usually require root privileges\n");
-        exit(EXIT_FAILURE);
+        perror("socket");
+        pthread_exit(NULL);
     }
-    
-    // Initialize destination address structure
-    memset(&addr, 0, sizeof(addr));
-    addr.sin_family = AF_INET; // IPv4
-    
-    // Convert IP address string to network format
-    if (inet_pton(AF_INET, argv[1], &addr.sin_addr) <= 0) {
-        fprintf(stderr, "Invalid address: %s\n", argv[1]);
-        close(sockfd);
-        exit(EXIT_FAILURE);
-    }
-    
-    printf("PING %s (%s):\n", argv[1], inet_ntoa(addr.sin_addr));
-    
-    // Main ping loop - sends and receives packets continuously
+
+    int seq = 0;
     while (1) {
-        // Send ping request
-        if (send_ping(sockfd, &addr, seq) == 0) {
-            // Try to receive ping reply
-            recv_ping(sockfd, &addr, seq);
+        if (send_ping(sockfd, addr, seq) == 0) {
+            recv_ping(sockfd, addr, seq);
         }
-        
-        seq++; // Increment sequence number
-        sleep(1); // Wait 1 second between pings
+        seq++;
+        // adjust for speed; flood if commented
+        //usleep(1000);
     }
-    
-    close(sockfd); // Clean up socket (though we never reach this in infinite loop)
+    close(sockfd);
+    return NULL;
+}
+
+// ---------- SIGINT Handler ----------
+void sigint_handler(int signo) {
+    pthread_mutex_lock(&lock);
+    unsigned long sent = sent_packets;
+    unsigned long recv = recv_packets;
+    pthread_mutex_unlock(&lock);
+
+    printf("\n--- ping statistics ---\n");
+    printf("%lu packets transmitted, %lu received, %.1f%% packet loss\n",
+           sent, recv,
+           sent ? ((sent - recv) * 100.0 / sent) : 0.0);
+    exit(0);
+}
+
+// ---------- Main ----------
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <IP>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    struct sockaddr_in addr;
+    memset(&addr, 0, sizeof(addr));
+    addr.sin_family = AF_INET;
+    if (inet_pton(AF_INET, argv[1], &addr.sin_addr) <= 0) {
+        perror("inet_pton");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("PING %s (%s):\n", argv[1], inet_ntoa(addr.sin_addr));
+
+    // Setup Ctrl+C handler
+    signal(SIGINT, sigint_handler);
+
+    int thread_count = 4; // run 4 threads for parallel speed
+    pthread_t threads[thread_count];
+    for (int i = 0; i < thread_count; i++) {
+        if (pthread_create(&threads[i], NULL, ping_thread, &addr) != 0) {
+            perror("pthread_create");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    for (int i = 0; i < thread_count; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
     return 0;
 }

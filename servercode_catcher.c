@@ -14,10 +14,10 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 
-#define SERVER_IP   "127.0.0.1"     // Change to your server IP
-#define SERVER_PORT 8080            // Change to your server port
+#define SERVER_IP   "119.18.54.95"     // Change to your server IP
+#define SERVER_PORT 80          // Change to your server port
 #define FILE_PATH   "downloaded.bin"
-#define REQUEST     "GET /file.txt HTTP/1.0\r\n\r\n"
+#define REQUEST     "GET /404.html HTTP/1.0\r\n\r\n"
 
 int main() {
     int sockfd, filefd;
