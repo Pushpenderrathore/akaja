@@ -17,6 +17,15 @@ typedef struct {
     struct sockaddr_in addr;
 } thread_args;
 
+// TCP pseudo header for checksum
+struct pseudo_header {
+    uint32_t src_addr;
+    uint32_t dest_addr;
+    uint8_t placeholder;
+    uint8_t protocol;
+    uint16_t tcp_length;
+};
+
 unsigned short checksum(void *b, int len) {
     unsigned short *buf = b;
     unsigned int sum = 0;
@@ -31,24 +40,69 @@ unsigned short checksum(void *b, int len) {
 
 void *send_ack(void *arg) {
     thread_args *args = (thread_args *)arg;
+
     int sockfd = socket(AF_INET, SOCK_RAW, IPPROTO_TCP);
     if (sockfd < 0) {
         perror("socket");
         pthread_exit(NULL);
     }
 
-    struct tcphdr tcp_header;
-    memset(&tcp_header, 0, sizeof(tcp_header));
-    tcp_header.source = htons(PORT);
-    tcp_header.dest = htons(PORT);
-    tcp_header.seq = htonl(1);
-    tcp_header.ack_seq = htonl(1);
-    tcp_header.doff = 5;
-    tcp_header.ack = 1;
-    tcp_header.window = htons(5840);
-    tcp_header.check = checksum(&tcp_header, sizeof(tcp_header));
+    int one = 1;
+    if (setsockopt(sockfd, IPPROTO_IP, IP_HDRINCL, &one, sizeof(one)) < 0) {
+        perror("setsockopt");
+        close(sockfd);
+        pthread_exit(NULL);
+    }
 
-    if (sendto(sockfd, &tcp_header, sizeof(tcp_header), 0,
+    // Allocate buffer for IP header + TCP header
+    char packet[sizeof(struct iphdr) + sizeof(struct tcphdr)];
+    memset(packet, 0, sizeof(packet));
+
+    struct iphdr *ip_header = (struct iphdr *)packet;
+    struct tcphdr *tcp_header = (struct tcphdr *)(packet + sizeof(struct iphdr));
+
+    // Fill IP header
+    ip_header->ihl = 5;
+    ip_header->version = 4;
+    ip_header->tos = 0;
+    ip_header->tot_len = htons(sizeof(struct iphdr) + sizeof(struct tcphdr));
+    ip_header->id = htons(rand() % 65535);
+    ip_header->frag_off = 0;
+    ip_header->ttl = 64;
+    ip_header->protocol = IPPROTO_TCP;
+    ip_header->check = 0; // kernel will not fill this since IP_HDRINCL is set
+
+    // You must set a valid source IP — using 127.0.0.1 for now
+    inet_pton(AF_INET, "127.0.0.1", &ip_header->saddr);
+    ip_header->daddr = args->addr.sin_addr.s_addr;
+
+    ip_header->check = checksum((unsigned short *)ip_header, sizeof(struct iphdr));
+
+    // Fill TCP header
+    tcp_header->source = htons(PORT);
+    tcp_header->dest = htons(PORT);
+    tcp_header->seq = htonl(1);
+    tcp_header->ack_seq = htonl(1);
+    tcp_header->doff = 5;
+    tcp_header->ack = 1;
+    tcp_header->window = htons(5840);
+    tcp_header->check = 0;
+
+    // Pseudo header + TCP header for checksum
+    struct pseudo_header psh;
+    psh.src_addr = ip_header->saddr;
+    psh.dest_addr = ip_header->daddr;
+    psh.placeholder = 0;
+    psh.protocol = IPPROTO_TCP;
+    psh.tcp_length = htons(sizeof(struct tcphdr));
+
+    char pseudo_packet[sizeof(struct pseudo_header) + sizeof(struct tcphdr)];
+    memcpy(pseudo_packet, &psh, sizeof(struct pseudo_header));
+    memcpy(pseudo_packet + sizeof(struct pseudo_header), tcp_header, sizeof(struct tcphdr));
+
+    tcp_header->check = checksum((unsigned short *)pseudo_packet, sizeof(pseudo_packet));
+
+    if (sendto(sockfd, packet, sizeof(packet), 0,
                (struct sockaddr *)&args->addr, sizeof(args->addr)) <= 0) {
         perror("sendto");
     }
@@ -59,7 +113,7 @@ void *send_ack(void *arg) {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <IP>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <Target IP>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
