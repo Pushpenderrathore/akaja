@@ -12,7 +12,8 @@
 #include <stdatomic.h>
 
 #define NUM_THREADS 10
-#define PORT 80
+#define PORT_RANGE_START 1024
+#define PORT_RANGE_END 65535
 
 typedef struct {
     int thread_id;
@@ -90,8 +91,8 @@ void *send_ack(void *arg) {
 
         ip_header->check = checksum((unsigned short *)ip_header, sizeof(struct iphdr));
 
-        tcp_header->source = htons(PORT);
-        tcp_header->dest = htons(PORT);
+        tcp_header->source = htons(rand() % (PORT_RANGE_END - PORT_RANGE_START + 1) + PORT_RANGE_START);
+        tcp_header->dest = htons(PORT_RANGE_START + (rand() % (PORT_RANGE_END - PORT_RANGE_START + 1)));
         tcp_header->seq = htonl(1);
         tcp_header->ack_seq = htonl(1);
         tcp_header->doff = 5;
@@ -115,6 +116,8 @@ void *send_ack(void *arg) {
         if (sendto(sockfd, packet, sizeof(packet), 0,
                    (struct sockaddr *)&args->addr, sizeof(args->addr)) > 0) {
             atomic_fetch_add(&packets_sent, 1);
+        } else {
+            perror("sendto");
         }
     }
 
@@ -136,6 +139,8 @@ void *recv_thread(void *arg) {
         ssize_t n = recvfrom(rsock, buffer, sizeof(buffer), 0, NULL, NULL);
         if (n > 0) {
             atomic_fetch_add(&packets_recv, 1);
+        } else {
+            perror("recvfrom");
         }
     }
 
@@ -186,4 +191,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
