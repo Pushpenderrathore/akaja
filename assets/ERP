@@ -1,0 +1,877 @@
+nmap $E -p8007 --script=* -vv -d --stats-every 5s
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-09-24 23:33 EDT
+--------------- Timing report ---------------
+  hostgroups: min 1, max 100000
+  rtt-timeouts: init 1000, min 100, max 10000
+  max-scan-delay: TCP 1000, UDP 1000, SCTP 1000
+  parallelism: min 0, max 0
+  max-retries: 10, host-timeout: 0
+  min-rate: 0, max-rate: 0
+---------------------------------------------
+NSE: Using Lua 5.4.
+NSE: Arguments from CLI: 
+NSE: Loaded 609 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 4) scan.
+Initiating NSE at 23:33
+NSE: Starting targets-ipv6-multicast-slaac.
+NSE: Starting broadcast-avahi-dos.
+NSE: Starting broadcast-tellstick-discover.
+NSE: Starting llmnr-resolve.
+NSE: [llmnr-resolve] no hostname was provided.
+NSE: Finished llmnr-resolve.
+NSE: Starting targets-ipv6-multicast-invalid-dst.
+NSE: Starting http-icloud-sendmsg.
+NSE: Finished http-icloud-sendmsg.
+NSE: Starting targets-ipv6-multicast-mld.
+NSE: Starting multicast-profinet-discovery.
+NSE: [multicast-profinet-discovery] Build packet for dcp identify all call.
+NSE: [multicast-profinet-discovery] Interface: eth0
+NSE: [multicast-profinet-discovery] Build packet for dcp identify all call.
+NSE: [multicast-profinet-discovery] Interface: wlan0
+NSE: Starting broadcast-sybase-asa-discover.
+NSE: Starting knx-gateway-discover.
+NSE: Starting targets-ipv6-multicast-echo.
+NSE: Starting http-icloud-findmyiphone.
+NSE: Finished http-icloud-findmyiphone.
+NSE: Starting broadcast-hid-discoveryd.
+NSE: [targets-xml] Need to supply a file name with the targets-xml.iX argument
+NSE: [broadcast-sonicwall-discover] No network interface was supplied, aborting.
+NSE: Starting broadcast-pc-anywhere.
+NSE: [targets-ipv6-map4to6] This script is IPv6 only.
+NSE: Starting broadcast-eigrp-discovery.
+NSE: [broadcast-eigrp-discovery] Will use wlan0 interface.
+NSE: [broadcast-eigrp-discovery] No A.S value provided, will sniff for one.
+NSE: Starting mtrace.
+NSE: [mtrace] A source IP must be provided through fromip argument.
+NSE: Finished mtrace.
+NSE: [ipv6-ra-flood] is IPv6 compatible only.
+NSE: Starting hostmap-robtex.
+NSE: Finished hostmap-robtex.
+NSE: [dns-brute] Skipping 'dns-brute' prerule, 'dns-brute.domain' argument is missing.
+NSE: Starting broadcast-rip-discover.
+NSE: [url-snarf] no network interface was supplied, aborting ...
+NSE: Starting broadcast-dhcp-discover.
+NSE: Starting ipv6-multicast-mld-list.
+NSE: Starting broadcast-bjnp-discover.
+NSE: Starting targets-asn.
+NSE: Finished targets-asn.
+NSE: Starting broadcast-ospf2-discover.
+NSE: Value for router ID argument: 0.0.0.1.
+NSE: Value for timeout argument: 10.
+NSE: Will use wlan0 interface.
+NSE: Start listening on interface wlan0...
+NSE: Starting broadcast-networker-discover.
+NSE: Starting broadcast-pppoe-discover.
+NSE: Starting broadcast-wpad-discover.
+NSE: Starting broadcast-db2-discover.
+NSE: Starting eap-info.
+NSE: Finished eap-info.
+NSE: Starting broadcast-netbios-master-browser.
+NSE: Starting dns-blacklist.
+NSE: Finished dns-blacklist.
+NSE: Starting http-virustotal.
+NSE: Finished http-virustotal.
+NSE: [shodan-api] Error: Please specify your ShodanAPI key with the shodan-api.apikey argument
+NSE: Starting broadcast-ms-sql-discover.
+NSE: Starting broadcast-novell-locate.
+NSE: Starting broadcast-ataoe-discover.
+NSE: [broadcast-ataoe-discover] No interface supplied, use -e
+NSE: Finished broadcast-ataoe-discover.
+NSE: Starting broadcast-versant-locate.
+NSE: Starting lltd-discovery.
+NSE: Starting broadcast-xdmcp-discover.
+NSE: [broadcast-dhcp6-discover] is IPv6 compatible only.
+NSE: Starting broadcast-dns-service-discovery.
+NSE: Starting broadcast-wsdd-discover.
+NSE: Starting http-robtex-shared-ns.
+NSE: Finished http-robtex-shared-ns.
+NSE: [targets-ipv6-wordlist] Need to be executed for IPv6.
+NSE: Starting broadcast-ping.
+NSE: Starting broadcast-listener.
+NSE: Starting broadcast-dropbox-listener.
+NSE: Starting broadcast-jenkins-discover.
+NSE: Starting broadcast-igmp-discovery.
+NSE: [broadcast-igmp-discovery] Will use wlan0 interface.
+NSE: Starting broadcast-upnp-info.
+NSE: Starting broadcast-pim-discovery.
+NSE: Starting broadcast-pc-duo.
+NSE: Starting mrinfo.
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: broadcast-dhcp-discover threw an error!
+/usr/share/nmap/scripts/broadcast-dhcp-discover.nse:170: attempt to index a boolean value
+stack traceback:
+        /usr/share/nmap/scripts/broadcast-dhcp-discover.nse:170: in function </usr/share/nmap/scripts/broadcast-dhcp-discover.nse:131>
+
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: [targets-ipv6-multicast-echo] Starting targets-ipv6-multicast-echo on wlan0
+NSE: multicast-profinet-discovery threw an error!
+/usr/share/nmap/scripts/multicast-profinet-discovery.nse:344: bad argument #1 to 'ethernet_open' (device is not valid ethernet interface)
+stack traceback:
+        [C]: in method 'ethernet_open'
+        /usr/share/nmap/scripts/multicast-profinet-discovery.nse:344: in function </usr/share/nmap/scripts/multicast-profinet-discovery.nse:339>
+
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-invalid-dst] Starting targets-ipv6-multicast-invalid-dst on wlan0
+NSE: [targets-ipv6-multicast-slaac] Starting targets-ipv6-multicast-slaac on wlan0
+NSE: [broadcast-pim-discovery] will send via wlan0 interface.
+NSE: [mrinfo] will send to 224.0.0.1 via wlan0 interface.
+NSE: [broadcast-ping] Erroneous ICMP packet received; Cannot parse IP header.
+NSE: [broadcast-wpad-discover] Unexpected end of options
+mass_rdns: Using DNS server 10.149.69.103
+mass_rdns: Using DNS server 2401:4900:5d3e:b2ee::f8
+NSE: [multicast-profinet-discovery] Start parsing of answer
+NSE: [multicast-profinet-discovery] Device MAC address: e6:0b:54:3a:47:81
+NSE: [multicast-profinet-discovery] Servicetype 0
+NSE: [broadcast-dhcp-discover] Unexpected end of options
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3afffe80
+NSE: [broadcast-listener] Unexpected end of options
+NSE: [broadcast-listener] Decoded DHCP: 10.149.69.103, 10.149.69.241, 255.255.255.0, 10.149.69.103, 10.149.69.103, -
+NSE: [broadcast-listener] No decoder for packet hex: 6015bfdd001c3a40fe80
+NSE: Finished broadcast-wpad-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cff0a95
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cff2401
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000200001fe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000200001fe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000200001fe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000200001fe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000200001fe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000200001fe80
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff2401
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cff2401
+NSE: [broadcast-listener] No decoder for packet hex: 600f493800403a402401
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff2401
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff2401
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cff2401
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff2401
+NSE: [broadcast-listener] No decoder for packet hex: 601c5376001c3a402401
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cfffe80
+NSE: [broadcast-listener] No decoder for packet hex: 600daba200403a40fe80
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff2401
+NSE: [broadcast-listener] No decoder for packet hex: 01010000ffffffffffff
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff2401
+NSE: [broadcast-listener] No decoder for packet hex: 60100001001c3aff0a95
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cff2401
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100103cff2401
+NSE: [broadcast-listener] No decoder for packet hex: fefe0500100000100004
+NSE: [broadcast-listener] No decoder for packet hex: 6010000100383afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 60026a4f002006412401
+NSE: [broadcast-listener] No decoder for packet hex: 660ca2410020067a2600
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 01010000ffffffffffff
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: Finished targets-ipv6-multicast-slaac.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+No profinet devices in the subnet
+NSE: Finished multicast-profinet-discovery.
+NSE: Finished targets-ipv6-multicast-echo.
+NSE: Finished targets-ipv6-multicast-invalid-dst.
+NSE: Finished broadcast-ping.
+NSE: Finished knx-gateway-discover.
+Stats: 0:00:05 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 46 (43 waiting)
+NSE Timing: About 57.01% done; ETC: 23:33 (0:00:04 remaining)
+NSE: Finished broadcast-tellstick-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000183afffe80
+NSE: Finished broadcast-rip-discover.
+NSE: Finished broadcast-db2-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: Finished broadcast-ms-sql-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000183aff2401
+NSE: Finished broadcast-novell-locate.
+NSE: Finished broadcast-versant-locate.
+NSE: Finished broadcast-upnp-info.
+NSE: Finished broadcast-pim-discovery.
+NSE: Finished broadcast-bjnp-discover.
+NSE: Finished mrinfo.
+NSE: Finished broadcast-wsdd-discover.
+NSE: Finished broadcast-sybase-asa-discover.
+NSE: Finished broadcast-hid-discoveryd.
+NSE: Finished broadcast-pc-anywhere.
+NSE: Finished broadcast-xdmcp-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: Finished broadcast-pc-duo.
+NSE: Finished broadcast-jenkins-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000183afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000183aff2401
+NSE: Finished broadcast-igmp-discovery.
+NSE: [broadcast-netbios-master-browser] dns.query() got zero responses attempting to resolve query: ABACFPFPENFDECFCEPFHFDEFFPFPACAB
+NSE: Finished broadcast-netbios-master-browser.
+Stats: 0:00:10 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 18 (17 waiting)
+NSE Timing: About 83.18% done; ETC: 23:34 (0:00:02 remaining)
+NSE: Finished broadcast-pppoe-discover.
+NSE: [broadcast-avahi-dos] dns.query() got zero responses attempting to resolve query: _services._dns-sd._udp.local
+NSE: Finished broadcast-avahi-dos.
+NSE: Finished broadcast-dhcp-discover.
+NSE: Finished broadcast-eigrp-discovery.
+NSE: [broadcast-listener] No decoder for packet hex: 600e238d009b06412401
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: Finished lltd-discovery.
+NSE: [broadcast-dns-service-discovery] dns.query() got zero responses attempting to resolve query: _services._dns-sd._udp.local
+NSE: Finished broadcast-dns-service-discovery.
+NSE: Finished broadcast-ospf2-discover.
+NSE: Finished targets-ipv6-multicast-mld.
+NSE: [ipv6-multicast-mld-list] Addr: ff02::1:ff00:0
+NSE: [ipv6-multicast-mld-list] <= ff02:0:0:0:0:1:ffff:ffff
+NSE: [ipv6-multicast-mld-list] >= ff02:0:0:0:0:1:ff00:0
+NSE: [ipv6-multicast-mld-list] done Solicited-Node Address
+NSE: [ipv6-multicast-mld-list] Addr: ff05::2
+NSE: [ipv6-multicast-mld-list] > ff02:0:0:0:0:1:ffff:ffff
+NSE: [ipv6-multicast-mld-list] > ff02:0:0:0:0:1:ffff:ffff
+NSE: [ipv6-multicast-mld-list] > ff02:0:0:0:0:2:ffff:ffff
+NSE: [ipv6-multicast-mld-list] > ff02:0:0:0:0:2:ffff:ffff
+NSE: [ipv6-multicast-mld-list] Addr: ff02::1:ff00:f8
+NSE: [ipv6-multicast-mld-list] <= ff02:0:0:0:0:1:ffff:ffff
+NSE: [ipv6-multicast-mld-list] >= ff02:0:0:0:0:1:ff00:0
+NSE: [ipv6-multicast-mld-list] done Solicited-Node Address
+NSE: Finished ipv6-multicast-mld-list.
+NSE: [broadcast-listener] No decoder for packet hex: 60026a4f002006412401
+NSE: [broadcast-listener] No decoder for packet hex: 660ca2410020067a2600
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+Stats: 0:00:15 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 4 (4 waiting)
+NSE Timing: About 96.26% done; ETC: 23:34 (0:00:01 remaining)
+NSE: Script broadcast-dropbox-listener: 0 threads running, 1 threads waiting
+NSE: Script broadcast-listener: 0 threads running, 2 threads waiting
+NSE: Script broadcast-networker-discover: 0 threads running, 1 threads waiting
+Stats: 0:00:20 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 4 (3 waiting)
+NSE Timing: About 96.26% done; ETC: 23:34 (0:00:01 remaining)
+NSE: Script broadcast-dropbox-listener: 0 threads running, 1 threads waiting
+NSE: Script broadcast-listener: 1 threads running, 1 threads waiting
+NSE: Script broadcast-networker-discover: 0 threads running, 1 threads waiting
+NSE: [broadcast-listener] No decoder for packet hex: 6006ed49009b06412401
+NSE: Finished broadcast-networker-discover.
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 60026a4f002006412401
+NSE: [broadcast-listener] No decoder for packet hex: 660ca2410020067a2600
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+Stats: 0:00:25 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 3 (2 waiting)
+NSE Timing: About 97.20% done; ETC: 23:34 (0:00:01 remaining)
+NSE: Script broadcast-dropbox-listener: 0 threads running, 1 threads waiting
+NSE: Script broadcast-listener: 1 threads running, 1 threads waiting
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+NSE: [broadcast-listener] No decoder for packet hex: 6000000000203afffe80
+Stats: 0:00:30 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 3 (3 waiting)
+NSE Timing: About 97.20% done; ETC: 23:34 (0:00:01 remaining)
+NSE: Script broadcast-dropbox-listener: 0 threads running, 1 threads waiting
+NSE: Script broadcast-listener: 0 threads running, 2 threads waiting
+NSE: Finished broadcast-listener.
+Stats: 0:00:35 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.07% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Script broadcast-dropbox-listener: 0 threads running, 1 threads waiting
+Stats: 0:00:40 elapsed; 0 hosts completed (0 up), 0 undergoing Script Pre-Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.07% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Script broadcast-dropbox-listener: 0 threads running, 1 threads waiting
+NSE: Finished broadcast-dropbox-listener.
+Completed NSE at 23:34, 40.14s elapsed
+NSE: Starting runlevel 2 (of 4) scan.
+Initiating NSE at 23:34
+Completed NSE at 23:34, 0.00s elapsed
+NSE: Starting runlevel 3 (of 4) scan.
+Initiating NSE at 23:34
+Completed NSE at 23:34, 0.00s elapsed
+NSE: Starting runlevel 4 (of 4) scan.
+Initiating NSE at 23:34
+Completed NSE at 23:34, 0.01s elapsed
+Pre-scan script results:
+| targets-ipv6-multicast-mld: 
+|   IP: fe80::7c06:e6ff:fedb:5fd7  MAC: 7e:06:e6:db:5f:d7  IFACE: wlan0
+| 
+|_  Use --script-args=newtargets to add the results as targets
+| broadcast-eigrp-discovery: 
+|_  ERROR: Couldn't get an A.S value.
+| ipv6-multicast-mld-list: 
+|   fe80::7c06:e6ff:fedb:5fd7: 
+|     device: wlan0
+|     mac: 7e:06:e6:db:5f:d7
+|     multicast_ips: 
+|       ff02::2                   (All Routers Address)
+|       ff02::1:ffdb:5fd7         (NDP Solicited-node)
+|       ff02::1:ff00:0            (Solicited-Node Address)
+|       ff05::2                   (unknown)
+|_      ff02::1:ff00:f8           (Solicited-Node Address)
+| broadcast-dhcp-discover: 
+|   Response 1 of 1: 
+|     Interface: wlan0
+|     IP Offered: 10.149.69.241
+|     DHCP Message Type: DHCPOFFER
+|     Server Identifier: 10.149.69.103
+|     IP Address Lease Time: 59m59s
+|     Renewal Time Value: 29m59s
+|     Rebinding Time Value: 52m29s
+|     Subnet Mask: 255.255.255.0
+|     Broadcast Address: 10.149.69.255
+|     Router: 10.149.69.103
+|     Domain Name Server: 10.149.69.103
+|_    Vendor Specific Information: ANDROID_METERED
+| broadcast-pppoe-discover: 
+|_  ERROR: Did not receive any packets
+| broadcast-listener: 
+|   udp
+|       DHCP
+|         srv ip         cli ip         mask           gw             dns            vendor
+|_        10.149.69.103  10.149.69.241  255.255.255.0  10.149.69.103  10.149.69.103  -
+| broadcast-wpad-discover: 
+|_  ERROR: Could not find WPAD using DNS/DHCP
+|_hostmap-robtex: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+| targets-ipv6-multicast-echo: 
+|   IP: fe80::7c06:e6ff:fedb:5fd7  MAC: 7e:06:e6:db:5f:d7  IFACE: wlan0
+|   IP: 2401:4900:5d3e:b2ee::f8    MAC: 7e:06:e6:db:5f:d7  IFACE: wlan0
+|_  Use --script-args=newtargets to add the results as targets
+| targets-ipv6-multicast-invalid-dst: 
+|   IP: 2401:4900:5d3e:b2ee::f8    MAC: 7e:06:e6:db:5f:d7  IFACE: wlan0
+|   IP: fe80::7c06:e6ff:fedb:5fd7  MAC: 7e:06:e6:db:5f:d7  IFACE: wlan0
+|_  Use --script-args=newtargets to add the results as targets
+| http-icloud-sendmsg: 
+|_  ERROR: No username or password was supplied
+| http-icloud-findmyiphone: 
+|_  ERROR: No username or password was supplied
+|_eap-info: please specify an interface with -e
+| targets-asn: 
+|_  targets-asn.asn is a mandatory parameter
+| http-virustotal: 
+|_  ERROR: An API key is required in order to use this script (see description)
+|_http-robtex-shared-ns: *TEMPORARILY DISABLED* due to changes in Robtex's API. See https://www.robtex.com/api/
+|_multicast-profinet-discovery: 0
+Initiating Ping Scan at 23:34
+Scanning 136.232.164.14 [4 ports]
+Packet capture filter (device wlan0): dst host 10.149.69.71 and (icmp or icmp6 or ((tcp or udp or sctp) and (src host 136.232.164.14)))
+We got a TCP ping packet back from 136.232.164.14 port 80 (trynum = 0)
+Completed Ping Scan at 23:34, 0.22s elapsed (1 total hosts)
+Overall sending rates: 18.11 packets / s, 688.32 bytes / s.
+Initiating Parallel DNS resolution of 1 host. at 23:34
+mass_rdns: 0.00s 0/1 [#: 2, OK: 0, NX: 0, DR: 0, SF: 0, TR: 1]
+Completed Parallel DNS resolution of 1 host. at 23:34, 0.00s elapsed
+DNS resolution of 1 IPs took 0.00s. Mode: Async [#: 2, OK: 0, NX: 1, DR: 0, SF: 0, TR: 1, CN: 0]
+Initiating SYN Stealth Scan at 23:34
+Scanning 136.232.164.14 [1 port]
+Packet capture filter (device wlan0): dst host 10.149.69.71 and (icmp or icmp6 or ((tcp or udp or sctp) and (src host 136.232.164.14)))
+Discovered open port 8007/tcp on 136.232.164.14
+Completed SYN Stealth Scan at 23:34, 0.09s elapsed (1 total ports)
+Overall sending rates: 10.92 packets / s, 480.57 bytes / s.
+NSE: Script scanning 136.232.164.14.
+NSE: Starting runlevel 1 (of 4) scan.
+Initiating NSE at 23:34
+NSE: Starting ip-geolocation-geoplugin against 136.232.164.14.
+NSE: [ip-forwarding 136.232.164.14] Failed to determine hosts remote MAC address
+NSE: [ip-geolocation-ipinfodb 136.232.164.14] not running: No IPInfoDB API key specified.
+NSE: Starting address-info against 136.232.164.14.
+NSE: Finished address-info against 136.232.164.14.
+NSE: Starting path-mtu against 136.232.164.14.
+NSE: Starting whois-domain against 136.232.164.14.
+NSE: Finished whois-domain against 136.232.164.14.
+NSE: Starting firewall-bypass against 136.232.164.14.
+NSE: [firewall-bypass 136.232.164.14] Target port not specified and no closed or filtered port found.
+NSE: Finished firewall-bypass against 136.232.164.14.
+NSE: Starting whois-ip against 136.232.164.14.
+NSE: Starting reverse-index against 136.232.164.14.
+NSE: [reverse-index 136.232.164.14] names = nil
+NSE: Finished reverse-index against 136.232.164.14.
+NSE: Starting unusual-port against 136.232.164.14:8007.
+NSE: Finished unusual-port against 136.232.164.14:8007.
+NSE: [ip-geolocation-maxmind 136.232.164.14] You must specify a Maxmind database file with the maxmind_db argument.
+NSE: [ip-geolocation-maxmind 136.232.164.14] Download the database from http://dev.maxmind.com/geoip/legacy/geolite/
+NSE: Starting rsa-vuln-roca against 136.232.164.14:8007.
+NSE: Starting tor-consensus-checker against 136.232.164.14.
+NSE: Starting dns-zeustracker against 136.232.164.14.
+NSE: Starting fcrdns against 136.232.164.14.
+NSE: Starting asn-query against 136.232.164.14.
+NSE: Starting unusual-port against 136.232.164.14.
+NSE: Finished unusual-port against 136.232.164.14.
+NSE: Starting port-states against 136.232.164.14.
+NSE: Finished port-states against 136.232.164.14.
+NSE: Starting dns-blacklist against 136.232.164.14.
+NSE: Starting hostmap-bfk against 136.232.164.14.
+NSE: Starting ipidseq against 136.232.164.14.
+NSE: [backorifice-brute 136.232.164.14:8007] Skipping 'backorifice-brute' portrule, 'ports' argument is missing.
+NSE: Starting banner against 136.232.164.14:8007.
+NSE: Starting dns-brute against 136.232.164.14.
+NSE: Finished dns-brute against 136.232.164.14.
+NSE: Finished path-mtu against 136.232.164.14.
+NSE: Starting sslv2 against 136.232.164.14:8007.
+NSE: [fcrdns 136.232.164.14] PTR request for 136.232.164.14 failed: No Such Name
+NSE: Finished fcrdns against 136.232.164.14.
+NSE: Finished dns-zeustracker against 136.232.164.14.
+NSE: Starting http-vuln-cve2014-2129 against 136.232.164.14:8007.
+NSE: Starting http-vuln-cve2014-2128 against 136.232.164.14:8007.
+NSE: Finished sslv2 against 136.232.164.14:8007.
+NSE: Starting http-vuln-cve2014-2127 against 136.232.164.14:8007.
+NSE: [ip-geolocation-geoplugin 136.232.164.14] Invalid latitude for 136.232.164.14: nil.
+NSE: Finished ip-geolocation-geoplugin against 136.232.164.14.
+NSE: [rsa-vuln-roca 136.232.164.14:8007] Not vulnerable
+NSE: Finished rsa-vuln-roca against 136.232.164.14:8007.
+NSE: Starting http-vuln-cve2014-2126 against 136.232.164.14:8007.
+NSE: [hostmap-bfk 136.232.164.14] Error: found no hostnames but not the marker for "no hostnames found" (pattern error?)
+NSE: Finished hostmap-bfk against 136.232.164.14.
+NSE: Finished whois-ip against 136.232.164.14.
+NSE: Finished ipidseq against 136.232.164.14.
+Stats: 0:00:45 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 9 (8 waiting)
+NSE Timing: About 98.05% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Finished asn-query against 136.232.164.14.
+Stats: 0:00:50 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 8 (8 waiting)
+NSE Timing: About 98.26% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Finished http-vuln-cve2014-2129 against 136.232.164.14:8007.
+Stats: 0:00:55 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 7 (7 waiting)
+NSE Timing: About 98.48% done; ETC: 23:34 (0:00:00 remaining)
+NSE: [dns-blacklist 136.232.164.14] dns.query() got zero responses attempting to resolve query: 14.164.232.136.l2.apews.org
+NSE: [dns-blacklist 136.232.164.14] Query function returned nothing, skipping 'dnsbl.httpbl.org'
+NSE: [dns-blacklist 136.232.164.14] Query function returned nothing, skipping 'ip-port.exitlist.torproject.org'
+NSE: Finished http-vuln-cve2014-2128 against 136.232.164.14:8007.
+Stats: 0:01:00 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 6 (6 waiting)
+NSE Timing: About 98.72% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Script http-vuln-cve2014-2126: 0 threads running, 1 threads waiting
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+NSE: Script http-vuln-cve2014-2127: 0 threads running, 1 threads waiting
+NSE: Script banner: 0 threads running, 1 threads waiting
+NSE: Script dns-blacklist: 0 threads running, 2 threads waiting
+NSE: [tor-consensus-checker 136.232.164.14] http.request socket error: The script encountered an error:
+- ssl failed:
+- Failed to connect:
+- Could not connect:
+- TIMEOUT
+NSE: Finished dns-blacklist against 136.232.164.14.
+NSE: [banner 136.232.164.14:8007] failed for 136.232.164.14 on tcp port 8007. Message: The script encountered an error:
+- tryssl failed:
+- ssl failed:
+- read failed:
+- receive failed:
+- TIMEOUT
+NSE: Finished banner against 136.232.164.14:8007.
+Stats: 0:01:05 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 3 (3 waiting)
+NSE Timing: About 99.36% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Script http-vuln-cve2014-2126: 0 threads running, 1 threads waiting
+NSE: Script http-vuln-cve2014-2127: 0 threads running, 1 threads waiting
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+NSE: Finished http-vuln-cve2014-2127 against 136.232.164.14:8007.
+Stats: 0:01:10 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 2 (2 waiting)
+NSE Timing: About 99.57% done; ETC: 23:34 (0:00:00 remaining)
+NSE: Script http-vuln-cve2014-2126: 0 threads running, 1 threads waiting
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:15 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 2 (2 waiting)
+NSE Timing: About 99.57% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script http-vuln-cve2014-2126: 0 threads running, 1 threads waiting
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+NSE: Finished http-vuln-cve2014-2126 against 136.232.164.14:8007.
+NSE: [tor-consensus-checker 136.232.164.14] http.request socket error: The script encountered an error:
+- ssl failed:
+- Failed to connect:
+- Could not connect:
+- TIMEOUT
+Stats: 0:01:20 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:25 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:30 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:35 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:40 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:45 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:50 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:01:55 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:00 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:05 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (0 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 1 threads running, 0 threads waiting
+Stats: 0:02:10 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:35 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:15 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:36 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:20 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:36 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:25 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:36 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:30 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:36 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+Stats: 0:02:35 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:36 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+NSE: [tor-consensus-checker 136.232.164.14] http.request socket error: The script encountered an error:
+- ssl failed:
+- Failed to connect:
+- Could not connect:
+- TIMEOUT
+Stats: 0:02:40 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 1 (1 waiting)
+NSE Timing: About 99.79% done; ETC: 23:36 (0:00:00 remaining)
+NSE: Script tor-consensus-checker: 0 threads running, 1 threads waiting
+NSE: [tor-consensus-checker 136.232.164.14] failed to connect to directory authorities
+NSE: Finished tor-consensus-checker against 136.232.164.14.
+Completed NSE at 23:36, 123.76s elapsed
+NSE: Starting runlevel 2 (of 4) scan.
+Initiating NSE at 23:36
+NSE: Starting ssl-ccs-injection against 136.232.164.14:8007.
+NSE: Starting ssl-enum-ciphers against 136.232.164.14:8007.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] Trying protocol TLSv1.0.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] Trying protocol TLSv1.3.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] Trying protocol SSLv3.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] Trying protocol TLSv1.2.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] Trying protocol TLSv1.1.
+NSE: Starting ssl-cert against 136.232.164.14:8007.
+NSE: Finished ssl-cert against 136.232.164.14:8007.
+NSE: Starting ssl-cert-intaddr against 136.232.164.14:8007.
+NSE: Finished ssl-cert-intaddr against 136.232.164.14:8007.
+NSE: Starting ssl-known-key against 136.232.164.14:8007.
+NSE: Finished ssl-known-key against 136.232.164.14:8007.
+NSE: Starting tls-nextprotoneg against 136.232.164.14:8007.
+NSE: Starting ssl-date against 136.232.164.14:8007.
+NSE: Starting ssl-heartbleed against 136.232.164.14:8007.
+NSE: Starting ssl-dh-params against 136.232.164.14:8007.
+NSE: Starting tls-ticketbleed against 136.232.164.14:8007.
+NSE: Starting tls-alpn against 136.232.164.14:8007.
+NSE: Starting sslv2-drown against 136.232.164.14:8007.
+NSE: Starting rpc-grind against 136.232.164.14:8007.
+Stats: 0:02:45 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 22 (11 waiting)
+NSE Timing: About 70.27% done; ETC: 23:36 (0:00:00 remaining)
+NSE: [ssl-ccs-injection 136.232.164.14:8007] Handshake completed (TLSv1.2)
+NSE: [tls-nextprotoneg 136.232.164.14:8007] Server does not support TLS NPN extension.
+NSE: Finished tls-nextprotoneg against 136.232.164.14:8007.
+NSE: Finished ssl-date against 136.232.164.14:8007.
+NSE: [ssl-heartbleed 136.232.164.14:8007] we're done!
+NSE: [ssl-heartbleed 136.232.164.14:8007] Server does not support TLS Heartbeat Requests.
+NSE: Finished sslv2-drown against 136.232.164.14:8007.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.3) 13 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [rpc-grind 136.232.164.14:8007] isRPC didn't receive response.
+NSE: [rpc-grind 136.232.164.14:8007] Target port 8007 is not a RPC port.
+NSE: Finished rpc-grind against 136.232.164.14:8007.
+NSE: [ssl-ccs-injection 136.232.164.14:8007] Couldn't send second ccs message: ERROR
+NSE: Finished ssl-ccs-injection against 136.232.164.14:8007.
+NSE: [tls-alpn 136.232.164.14:8007] Couldn't receive: ERROR
+NSE: [tls-alpn 136.232.164.14:8007] Client hello failed with 33 protocols
+NSE: Finished tls-alpn against 136.232.164.14:8007.
+NSE: [ssl-heartbleed 136.232.164.14:8007] we're done!
+NSE: [ssl-heartbleed 136.232.164.14:8007] Server does not support TLS Heartbeat Requests.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-heartbleed 136.232.164.14:8007] we're done!
+NSE: [ssl-heartbleed 136.232.164.14:8007] Server does not support TLS Heartbeat Requests.
+NSE: Finished ssl-heartbleed against 136.232.164.14:8007.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_hello record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured certificate record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_key_exchange record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_hello_done record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Unknown message type: change_cipher_spec
+NSE: [tls-ticketbleed 136.232.164.14:8007] Server did not send a NewSessionTicket record.
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-dh-params 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_hello record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured certificate record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_key_exchange record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_hello_done record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Unknown message type: change_cipher_spec
+NSE: [tls-ticketbleed 136.232.164.14:8007] Server did not send a NewSessionTicket record.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (SSLv3) 4 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-dh-params 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (SSLv3) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_hello record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured certificate record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_key_exchange record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Captured server_hello_done record.
+NSE: [tls-ticketbleed 136.232.164.14:8007] Unknown message type: change_cipher_spec
+NSE: [tls-ticketbleed 136.232.164.14:8007] Server did not send a NewSessionTicket record.
+NSE: Finished tls-ticketbleed against 136.232.164.14:8007.
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) 4 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) 4 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.1) Comparing TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA to TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.0) Comparing TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA to TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: [ssl-dh-params 136.232.164.14:8007] (TLSv1.1) Couldn't read a TLS record: ERROR
+NSE: Finished ssl-dh-params against 136.232.164.14:8007.
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Couldn't read a TLS record: ERROR
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) 4 ciphers and/or protocol rejected. (No handshake)
+NSE: [ssl-enum-ciphers 136.232.164.14:8007] (TLSv1.2) Comparing TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 to TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+Stats: 0:02:50 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE: Active NSE Script Threads: 9 (8 waiting)
+NSE Timing: About 87.84% done; ETC: 23:36 (0:00:01 remaining)
+NSE: Script ssl-enum-ciphers: 1 threads running, 1 threads waiting
+NSE: Script ms-sql-ntlm-info: 0 threads running, 1 threads waiting
+NSE: Script ms-sql-dac: 0 threads running, 2 threads waiting
+NSE: Script ms-sql-info: 0 threads running, 2 threads waiting
+NSE: Script ms-sql-empty-password: 0 threads running, 2 threads waiting
+NSE: Finished ssl-enum-ciphers against 136.232.164.14:8007.
+Completed NSE at 23:36, 7.04s elapsed
+NSE: Starting runlevel 3 (of 4) scan.
+Initiating NSE at 23:36
+NSE: Starting clock-skew against 136.232.164.14.
+NSE: Finished clock-skew against 136.232.164.14.
+NSE: Starting duplicates against 136.232.164.14.
+NSE: Finished duplicates against 136.232.164.14.
+NSE: Starting ssl-poodle against 136.232.164.14:8007.
+NSE: (SSLv3) Couldn't read a TLS record: ERROR
+NSE: (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: (SSLv3) Couldn't read a TLS record: ERROR
+NSE: (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: (SSLv3) Couldn't read a TLS record: ERROR
+NSE: (SSLv3) 64 ciphers and/or protocol rejected. (No handshake)
+NSE: (SSLv3) Couldn't read a TLS record: ERROR
+NSE: (SSLv3) 16 ciphers and/or protocol rejected. (No handshake)
+NSE: Finished ssl-poodle against 136.232.164.14:8007.
+Completed NSE at 23:36, 0.49s elapsed
+NSE: Starting runlevel 4 (of 4) scan.
+Initiating NSE at 23:36
+Completed NSE at 23:36, 0.00s elapsed
+Nmap scan report for 136.232.164.14
+Host is up, received reset ttl 125 (0.18s latency).
+Scanned at 2025-09-24 23:34:29 EDT for 131s
+
+PORT     STATE SERVICE REASON
+8007/tcp open  ajp12   syn-ack ttl 114
+| http-vuln-cve2014-2129: 
+|_  ERROR: Not a Cisco ASA or unsupported version
+| ssl-enum-ciphers: 
+|   TLSv1.0: 
+|     ciphers: 
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|     warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+|   TLSv1.1: 
+|     ciphers: 
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|     warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+|   TLSv1.2: 
+|     ciphers: 
+|       TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (ecdh_x25519) - A
+|       TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (dh 2048) - A
+|       TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (dh 2048) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (ecdh_x25519) - A
+|       TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (secp384r1) - A
+|       TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (ecdh_x25519) - A
+|       TLS_RSA_WITH_AES_256_GCM_SHA384 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_GCM_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA256 (rsa 2048) - A
+|       TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+|       TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+|     compressors: 
+|       NULL
+|     cipher preference: server
+|     warnings: 
+|       64-bit block cipher 3DES vulnerable to SWEET32 attack
+|_  least strength: C
+| tls-alpn: 
+|_  http/1.1
+| http-vuln-cve2014-2128: 
+|_  ERROR: Not a Cisco ASA or unsupported version
+| http-vuln-cve2014-2127: 
+|_  ERROR: Not a Cisco ASA or unsupported version
+|_ssl-date: 2025-09-25T03:36:33+00:00; 0s from scanner time.
+| ssl-cert: Subject: commonName=WMSvc-SHA2-WIN-52A8NNDSVB8
+| Issuer: commonName=WMSvc-SHA2-WIN-52A8NNDSVB8
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2024-12-26T05:30:36
+| Not valid after:  2034-12-24T05:30:36
+| MD5:   8ee6:612b:b7c1:7e99:589c:57de:391e:1f39
+| SHA-1: 3fe8:b7be:ba3f:b8f9:79c8:c87e:bcc5:0500:c499:abad
+| -----BEGIN CERTIFICATE-----
+| MIIC+zCCAeOgAwIBAgIQSGBHlcOIJ6BAqOWPgr9X8TANBgkqhkiG9w0BAQsFADAl
+| MSMwIQYDVQQDExpXTVN2Yy1TSEEyLVdJTi01MkE4Tk5EU1ZCODAeFw0yNDEyMjYw
+| NTMwMzZaFw0zNDEyMjQwNTMwMzZaMCUxIzAhBgNVBAMTGldNU3ZjLVNIQTItV0lO
+| LTUyQThOTkRTVkI4MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv74d
+| qo7Mp4uRoNVeXN2D01W81ta+IW/KIJtLwNyFRiYpm40eeLb7802SGbpWZ1MFcsLP
+| ujNyBXx/AINVUX0Hwymn9Uozm3VxErPcaykHFcGoodn50A07nr+K7N4kU8/BTYiL
+| 8U1QV6EsMk5S3sL8p3jmgJUcLGqXkXHvgZhLUofU/nzOG30/8rlQpR93OX3uLZHk
+| iCx/DG1GaGETR2nXVPjBciVTJ/YkrEzvMNoZOjBd57vMiE19WWEeEV7OG6lEggOH
+| 9FI/yo74UNDcN/V3VNlnIZii4VcLeqhoZDrH3TfPXAQqzGvwegH8G++17MXRvUkB
+| Q9pI7Qvwa8RtO/7o5QIDAQABoycwJTATBgNVHSUEDDAKBggrBgEFBQcDATAOBgNV
+| HQ8EBwMFALAAAAAwDQYJKoZIhvcNAQELBQADggEBAJ9HMxIcblR4JFDJw3pXizLE
+| Iv2rjpeuETUusfBLRDg9HWHKMOZpJy+uQUguohdgjH2jLHqkChP3bkGcEef7xGKg
+| NB+v42zx1dxKSei+O+6JXxv4DZb1oyu+plZ14M6jxAwH5sGiUs6ABe4MiGurNfvJ
+| wds+lFynVMKDs30bh23MXBrjcMnOUQ3Iz+v/FEN6ldwAZNPIdab5NJGm2cuEpmZD
+| z2yzMIo3qwNHFIgy+BjsYtFZucWCK/yLAT8BaHTbJqP2pfpuDqZxEb5JH4GfubMz
+| xqmRy4VhdELhiE2qnJvLfr6MhTtRtOrpyKU3us/tTz0vOFO3ollILffg5tmR2x8=
+|_-----END CERTIFICATE-----
+| http-vuln-cve2014-2126: 
+|_  ERROR: Not a Cisco ASA or unsupported version
+
+Host script results:
+|_ip-geolocation-geoplugin: coordinates: nil, nil
+|_ipidseq: Incremental! [used port 8007]
+| dns-blacklist: 
+|   SPAM
+|     l2.apews.org - FAIL
+|_    list.quorum.to - SPAM
+|_whois-domain: You should provide a domain name.
+| unusual-port: 
+|_  WARNING: this script depends on Nmap's service/version detection (-sV)
+| whois-ip: Record found at whois.apnic.net
+| inetnum: 136.232.0.0 - 136.233.255.255
+| netname: RELIANCEJIO-IN
+| descr: Reliance Jio Infocomm Limited
+| country: IN
+| orgname: Reliance Jio Infocomm Limited
+| organisation: ORG-RJIL1-AP
+| email: ip.management@ril.com
+| role: ABUSE RELIANCEJIOIN
+|_email: ip.abuse@ril.com
+| port-states: 
+|   tcp: 
+|_    open: 8007
+|_fcrdns: FAIL (No PTR record)
+|_path-mtu: PMTU == 1500
+|_clock-skew: 0s
+| asn-query: 
+| BGP: 136.232.164.0/22 | Country: IN
+|   Origin AS: 55836 - RELIANCEJIO-IN Reliance Jio Infocomm Limited, IN
+|_    Peer AS: 64049
+|_tor-consensus-checker: Couln't connect to Tor dir authorities
+|_dns-brute: Can't guess domain of "136.232.164.14"; use dns-brute.domain script argument.
+Final times for host: srtt: 184189 rttvar: 182568  to: 914461
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 4) scan.
+Initiating NSE at 23:36
+NSE: Starting reverse-index.
+NSE: Finished reverse-index.
+Completed NSE at 23:36, 0.00s elapsed
+NSE: Starting runlevel 2 (of 4) scan.
+Initiating NSE at 23:36
+Completed NSE at 23:36, 0.00s elapsed
+NSE: Starting runlevel 3 (of 4) scan.
+Initiating NSE at 23:36
+NSE: Starting clock-skew.
+NSE: Finished clock-skew.
+NSE: Starting duplicates.
+NSE: Finished duplicates.
+Completed NSE at 23:36, 0.00s elapsed
+NSE: Starting runlevel 4 (of 4) scan.
+Initiating NSE at 23:36
+Completed NSE at 23:36, 0.00s elapsed
+Post-scan script results:
+| reverse-index: 
+|_  8007/tcp: 136.232.164.14
+Read from /usr/share/nmap: nmap-protocols nmap-services.
+Nmap done: 1 IP address (1 host up) scanned in 172.52 seconds
+           Raw packets sent: 12 (1.960KB) | Rcvd: 2 (84B)
